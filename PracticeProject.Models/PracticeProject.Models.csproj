@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{72D31E9F-D362-4580-BDFF-77A54F809F34}</ProjectGuid>
+    <ProjectGuid>{4F7643A6-E2E1-4E3E-ACAA-4D458445D874}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PracticeProject.Services</RootNamespace>
-    <AssemblyName>PracticeProject.Services</AssemblyName>
+    <RootNamespace>PracticeProject.Models</RootNamespace>
+    <AssemblyName>PracticeProject.Models</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,12 +41,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PracticeProject.Models\PracticeProject.Models.csproj">
-      <Project>{4f7643a6-e2e1-4e3e-acaa-4d458445d874}</Project>
-      <Name>PracticeProject.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1064,6 +1064,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PracticeProject.Models\PracticeProject.Models.csproj">
+      <Project>{4f7643a6-e2e1-4e3e-acaa-4d458445d874}</Project>
+      <Name>PracticeProject.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PracticeProject.Services\PracticeProject.Services.csproj">
       <Project>{72d31e9f-d362-4580-bdff-77a54f809f34}</Project>
       <Name>PracticeProject.Services</Name>
