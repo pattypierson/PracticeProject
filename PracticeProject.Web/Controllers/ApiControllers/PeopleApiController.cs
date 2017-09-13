@@ -11,12 +11,7 @@ namespace PracticeProject.Web.Controllers.ApiControllers
     [RoutePrefix("api/people")]
     public class PeopleApiController : ApiController
     {
-        private IPeopleService _peopleService;
-
-        public PeopleApiController(IPeopleService PeopleService)
-        {
-            _peopleService = PeopleService;
-        }
+        PeopleService peopleService = new PeopleService();
 
         // GET ALL api/<controller>
         [Route(""), HttpGet]
@@ -25,7 +20,7 @@ namespace PracticeProject.Web.Controllers.ApiControllers
             try
             {
                 ItemsResponse<People> response = new ItemsResponse<People>();
-                response.Items = _peopleService.Get();
+                response.Items = peopleService.SelectAll();
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (Exception ex)
