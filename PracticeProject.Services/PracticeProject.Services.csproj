@@ -47,10 +47,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PracticeProject.Data\PracticeProject.Data.csproj">
-      <Project>{9f19db4a-0153-4582-9de3-22fdc6b83688}</Project>
-      <Name>PracticeProject.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PracticeProject.Models\PracticeProject.Models.csproj">
       <Project>{4f7643a6-e2e1-4e3e-acaa-4d458445d874}</Project>
       <Name>PracticeProject.Models</Name>
