@@ -46,29 +46,30 @@ namespace PracticeProject.Services
             return list;
         }
 
-        //--PEOPLE MAPPER--SQLDATAREADER--
-        private People Mapper(SqlDataReader reader)
-        {
-            People model = new People();
-            int index = 0;
+        ////--PEOPLE MAPPER--SQLDATAREADER--
+        //private People Mapper(SqlDataReader reader)
+        //{
+        //    People model = new People();
+        //    int index = 0;
 
-            model.Id = reader.GetInt32(index++);
-            model.FirstName = reader.GetString(index++);
+        //    model.Id = reader.GetInt32(index++);
+        //    model.FirstName = reader.GetString(index++);
 
-            if (!reader.IsDBNull(index))
-                model.MiddleInitial = reader.GetString(index++);
-            else
-                index++;  
+        //    if (!reader.IsDBNull(index))
+        //        model.MiddleInitial = reader.GetString(index++);
+        //    else
+        //        index++;  
             
-            model.LastName = reader.GetString(index++);
-            model.CreatedDate = reader.GetDateTime(index++);
-            model.ModifiedDate = reader.GetDateTime(index++);
-            model.ModifiedBy = reader.GetString(index++);
+        //    model.LastName = reader.GetString(index++);
+        //    model.CreatedDate = reader.GetDateTime(index++);
+        //    model.ModifiedDate = reader.GetDateTime(index++);
+        //    model.ModifiedBy = reader.GetString(index++);
 
-            return model;
-        }
+        //    return model;
+        //}
 
         //--PEOPLE MAPPER--IDATAREADER--
+
         private People Mapper(IDataReader reader)
         {
             People singleItem = new People();

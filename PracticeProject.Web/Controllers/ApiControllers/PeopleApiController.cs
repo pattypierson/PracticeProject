@@ -1,39 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using PracticeProject.Models.Domain;
+using PracticeProject.Models.Responses;
+using PracticeProject.Services;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
 namespace PracticeProject.Web.Controllers.ApiControllers
 {
+    [RoutePrefix("api/people")]
     public class PeopleApiController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        private IPeopleService _peopleService;
+
+        public PeopleApiController(IPeopleService PeopleService)
         {
-            return new string[] { "value1", "value2" };
+            _peopleService = PeopleService;
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        // GET ALL api/<controller>
+        [Route(""), HttpGet]
+        public HttpResponseMessage Get()
         {
-            return "value";
+            try
+            {
+                ItemsResponse<People> response = new ItemsResponse<People>();
+                response.Items = _peopleService.Get();
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
         }
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
-        {
-        }
+        //// GET api/<controller>/5
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        //// POST api/<controller>
+        //public void Post([FromBody]string value)
+        //{
+        //}
 
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
-        }
+        //// PUT api/<controller>/5
+        //public void Put(int id, [FromBody]string value)
+        //{
+        //}
+
+        //// DELETE api/<controller>/5
+        //public void Delete(int id)
+        //{
+        //}
     }
 }
