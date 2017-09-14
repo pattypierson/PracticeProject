@@ -8,9 +8,9 @@ AS
 /*
 DECLARE   
 	  @_id INT = 1
-	, @_firstName nvarchar(50) = 'Vic'
-	, @_middleInitial nchar(1) = 'M'
-	, @_lastName nvarchar(50) = 'Campos'
+	, @_firstName nvarchar(50) = 'Billy'
+	, @_middleInitial nchar(1) = 'B'
+	, @_lastName nvarchar(50) = 'Johnson'
 	, @_modifiedBy nvarchar(128) = 'Patty'
 
 EXECUTE [dbo].[People_Update]
