@@ -1,4 +1,5 @@
 ﻿using PracticeProject.Models.Domain;
+using PracticeProject.Models.Requests;
 using PracticeProject.Models.Responses;
 using PracticeProject.Services;
 using System;
@@ -36,8 +37,22 @@ namespace PracticeProject.Web.Controllers.ApiControllers
         //}
 
         //// POST api/<controller>
-        //public void Post([FromBody]string value)
+        //[Route(""), HttpPost]
+        //public HttpResponseMessage Post(PersonAddRequest model)
         //{
+        //    try
+        //    {
+        //        if (!ModelState.IsValid)
+        //            return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+
+        //        ItemResponse<int> response = new ItemResponse<int>();
+        //        response.Item = peopleService.Insert(model);
+        //        return Request.CreateResponse(HttpStatusCode.OK, response);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+        //    }
         //}
 
         //// PUT api/<controller>/5
@@ -45,9 +60,20 @@ namespace PracticeProject.Web.Controllers.ApiControllers
         //{
         //}
 
-        //// DELETE api/<controller>/5
-        //public void Delete(int id)
-        //{
-        //}
+        // DELETE api/<controller>/5
+        [Route("{id:int}"), HttpDelete]
+        public HttpResponseMessage Delete(int id)
+        {
+            try
+            {
+                SuccessResponse response = new SuccessResponse();
+                peopleService.Delete(id);
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
     }
 }

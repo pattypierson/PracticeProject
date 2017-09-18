@@ -1,4 +1,5 @@
 ﻿using PracticeProject.Models.Domain;
+using PracticeProject.Models.Requests;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -38,6 +39,49 @@ namespace PracticeProject.Services
             }
             return peopleList;
         }
+
+        //--DELETE--
+        public void Delete(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("dbo.People_Delete", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    cmd.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+        }
+
+        ////--INSERT PERSON--
+        //public int Insert(PersonAddRequest model)
+        //{
+        //    int id = 0;
+        //    using (SqlConnection conn = new SqlConnection(connString))
+        //    {
+        //        conn.Open();
+        //        using (SqlCommand cmd = new SqlCommand("dbo.People_Insert", conn))
+        //        {
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            cmd.Parameters.AddWithValue("@FirstName", model.FirstName);
+        //            cmd.Parameters.AddWithValue("@MiddleInitial", model.MiddleInitial);
+        //            cmd.Parameters.AddWithValue("@LastName", model.LastName);
+        //            cmd.Parameters.AddWithValue("@ModifiedBy", model.ModifiedBy);
+
+        //            SqlParameter idParameter = new SqlParameter("Id", SqlDbType.Int);
+        //            idParameter.Direction = ParameterDirection.Output;
+        //            cmd.Parameters.Add(idParameter);
+        //            cmd.ExecuteNonQuery();
+
+        //            id = (int)cmd.Parameters["@Id"].Value;
+        //        }
+        //        conn.Close();
+        //    }
+        //    return id;
+        //}
 
         //--PEOPLE MAPPER--SQLDATAREADER--
         private People Mapper(SqlDataReader reader)
