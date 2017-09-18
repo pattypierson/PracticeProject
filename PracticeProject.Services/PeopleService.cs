@@ -8,6 +8,7 @@ namespace PracticeProject.Services
 {
     public class PeopleService : BaseService
     {
+        //--SELECT ALL--
         public List<People> SelectAll()
         {
             List<People> peopleList = new List<People>();
