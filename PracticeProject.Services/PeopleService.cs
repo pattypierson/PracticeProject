@@ -40,6 +40,75 @@ namespace PracticeProject.Services
             return peopleList;
         }
 
+        //--SELECT BY ID--
+        public People SelectById(int id)
+        {
+            People model = new People();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("dbo.People_SelectById", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                        model = Mapper(reader);
+                }
+                conn.Close();
+            }
+            return model;
+        }
+
+        //--INSERT PERSON--
+        public int Insert(PersonAddRequest model)
+        {
+            int id = 0;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("dbo.People_Insert", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@FirstName", model.FirstName);
+                    cmd.Parameters.AddWithValue("@MiddleInitial", model.MiddleInitial);
+                    cmd.Parameters.AddWithValue("@LastName", model.LastName);
+                    cmd.Parameters.AddWithValue("@ModifiedBy", model.ModifiedBy);
+
+                    SqlParameter idParameter = new SqlParameter("Id", SqlDbType.Int);
+                    idParameter.Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add(idParameter);
+                    cmd.ExecuteNonQuery();
+
+                    id = (int)cmd.Parameters["@Id"].Value;
+                }
+                conn.Close();
+            }
+            return id;
+        }
+
+        //--UPDATE--
+        public void Update(PersonUpdateRequest model)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("dbo.People_Update", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Id", model.Id);
+                    cmd.Parameters.AddWithValue("@FirstName", model.FirstName);
+                    cmd.Parameters.AddWithValue("@MiddleInitial", model.MiddleInitial);
+                    cmd.Parameters.AddWithValue("@LastName", model.LastName);
+                    cmd.Parameters.AddWithValue("@ModifiedBy", model.ModifiedBy);
+
+                    cmd.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+        }
+
         //--DELETE--
         public void Delete(int id)
         {
@@ -55,33 +124,6 @@ namespace PracticeProject.Services
                 conn.Close();
             }
         }
-
-        ////--INSERT PERSON--
-        //public int Insert(PersonAddRequest model)
-        //{
-        //    int id = 0;
-        //    using (SqlConnection conn = new SqlConnection(connString))
-        //    {
-        //        conn.Open();
-        //        using (SqlCommand cmd = new SqlCommand("dbo.People_Insert", conn))
-        //        {
-        //            cmd.CommandType = CommandType.StoredProcedure;
-        //            cmd.Parameters.AddWithValue("@FirstName", model.FirstName);
-        //            cmd.Parameters.AddWithValue("@MiddleInitial", model.MiddleInitial);
-        //            cmd.Parameters.AddWithValue("@LastName", model.LastName);
-        //            cmd.Parameters.AddWithValue("@ModifiedBy", model.ModifiedBy);
-
-        //            SqlParameter idParameter = new SqlParameter("Id", SqlDbType.Int);
-        //            idParameter.Direction = ParameterDirection.Output;
-        //            cmd.Parameters.Add(idParameter);
-        //            cmd.ExecuteNonQuery();
-
-        //            id = (int)cmd.Parameters["@Id"].Value;
-        //        }
-        //        conn.Close();
-        //    }
-        //    return id;
-        //}
 
         //--PEOPLE MAPPER--SQLDATAREADER--
         private People Mapper(SqlDataReader reader)
