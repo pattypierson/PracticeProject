@@ -105,6 +105,22 @@ namespace PracticeProject.Services
             }
         }
 
+        //--DELETE--
+        public void Delete(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("dbo.Team_Delete", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    cmd.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+        }
+
         //--TEAM MAPPER--SQLDATAREADER--
         private Team Mapper(SqlDataReader reader)
         {

@@ -87,8 +87,19 @@ namespace PracticeProject.Web.Controllers.ApiControllers
         }
 
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        [Route("{id:int}"), HttpDelete]
+        public HttpResponseMessage Delete(int id)
         {
+            try
+            {
+                SuccessResponse response = new SuccessResponse();
+                teamService.Delete(id);
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
         }
     }
 }
