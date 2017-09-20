@@ -52,6 +52,8 @@
     <Compile Include="Responses\ItemResponse.cs" />
     <Compile Include="Responses\ItemsResponse.cs" />
     <Compile Include="Responses\SuccessResponse.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\ItemViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
