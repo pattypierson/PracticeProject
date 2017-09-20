@@ -76,7 +76,7 @@ namespace PracticeProject.Services
                     cmd.Parameters.AddWithValue("@LastName", model.LastName);
                     cmd.Parameters.AddWithValue("@ModifiedBy", model.ModifiedBy);
 
-                    SqlParameter idParameter = new SqlParameter("Id", SqlDbType.Int);
+                    SqlParameter idParameter = new SqlParameter("@Id", SqlDbType.Int);
                     idParameter.Direction = ParameterDirection.Output;
                     cmd.Parameters.Add(idParameter);
                     cmd.ExecuteNonQuery();

@@ -1,4 +1,5 @@
 ﻿using PracticeProject.Models.Domain;
+using PracticeProject.Models.Requests;
 using PracticeProject.Models.Responses;
 using PracticeProject.Services;
 using System;
@@ -46,8 +47,23 @@ namespace PracticeProject.Web.Controllers.ApiControllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        [Route(""), HttpPost]
+        public HttpResponseMessage Post(TeamAddRequest model)
         {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                ItemResponse<int> response = new ItemResponse<int>();
+                response.Item = teamService.Insert(model);
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
         }
 
         // PUT api/<controller>/5

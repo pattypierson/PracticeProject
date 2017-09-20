@@ -1,4 +1,5 @@
 ﻿using PracticeProject.Models.Domain;
+using PracticeProject.Models.Requests;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -58,6 +59,31 @@ namespace PracticeProject.Services
                 conn.Close();
             }
             return model;
+        }
+
+        //--INSERT TEAM--
+        public int Insert(TeamAddRequest model)
+        {
+            int id = 0;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("dbo.Team_Insert", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@TeamName", model.TeamName);
+                    cmd.Parameters.AddWithValue("@CreatedBy", model.CreatedBy);
+
+                    SqlParameter idParameter = new SqlParameter("@Id", SqlDbType.Int);
+                    idParameter.Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add(idParameter);
+                    cmd.ExecuteNonQuery();
+
+                    id = (int)cmd.Parameters["@Id"].Value;
+                }
+                conn.Close();
+            }
+            return id;
         }
 
         //--TEAM MAPPER--SQLDATAREADER--
