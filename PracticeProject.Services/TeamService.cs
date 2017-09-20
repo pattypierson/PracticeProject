@@ -86,6 +86,25 @@ namespace PracticeProject.Services
             return id;
         }
 
+        //--UPDATE--
+        public void Update(TeamUpdateRequest model)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("dbo.Team_Update", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Id", model.Id);
+                    cmd.Parameters.AddWithValue("@TeamName", model.TeamName);
+                    cmd.Parameters.AddWithValue("@CreatedBy", model.CreatedBy);
+
+                    cmd.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+        }
+
         //--TEAM MAPPER--SQLDATAREADER--
         private Team Mapper(SqlDataReader reader)
         {

@@ -67,8 +67,23 @@ namespace PracticeProject.Web.Controllers.ApiControllers
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        [Route("{id:int}"), HttpPut]
+        public HttpResponseMessage Put(TeamUpdateRequest model)
         {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                SuccessResponse response = new SuccessResponse();
+                teamService.Update(model);
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
         }
 
         // DELETE api/<controller>/5
