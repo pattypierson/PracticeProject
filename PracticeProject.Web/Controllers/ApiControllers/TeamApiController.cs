@@ -2,19 +2,19 @@
 using PracticeProject.Models.Responses;
 using PracticeProject.Services;
 using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
 namespace PracticeProject.Web.Controllers.ApiControllers
 {
-    [Route("api/team")]
+    [RoutePrefix("api/team")]
     public class TeamApiController : ApiController
     {
         TeamService teamService = new TeamService();
 
         // GET ALL api/<controller>
+        [Route(""), HttpGet]
         public HttpResponseMessage Get()
         {
             try
@@ -29,25 +29,35 @@ namespace PracticeProject.Web.Controllers.ApiControllers
             }
         }
 
-        //// GET api/<controller>/5
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        // GET BY ID api/<controller>/5
+        [Route("{id:int}"), HttpGet]
+        public HttpResponseMessage Get(int id)
+        {
+            try
+            {
+                ItemResponse<Team> response = new ItemResponse<Team>();
+                response.Item = teamService.SelectById(id);
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
 
-        //// POST api/<controller>
-        //public void Post([FromBody]string value)
-        //{
-        //}
+        // POST api/<controller>
+        public void Post([FromBody]string value)
+        {
+        }
 
-        //// PUT api/<controller>/5
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
+        // PUT api/<controller>/5
+        public void Put(int id, [FromBody]string value)
+        {
+        }
 
-        //// DELETE api/<controller>/5
-        //public void Delete(int id)
-        //{
-        //}
+        // DELETE api/<controller>/5
+        public void Delete(int id)
+        {
+        }
     }
 }

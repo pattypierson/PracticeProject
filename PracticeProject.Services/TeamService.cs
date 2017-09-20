@@ -39,6 +39,27 @@ namespace PracticeProject.Services
             return teamList;
         }
 
+        //--SELECT BY ID--
+        public Team SelectById(int id)
+        {
+            Team model = new Team();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("dbo.Team_SelectById", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                        model = Mapper(reader);
+                }
+                conn.Close();
+            }
+            return model;
+        }
+
         //--TEAM MAPPER--SQLDATAREADER--
         private Team Mapper(SqlDataReader reader)
         {
