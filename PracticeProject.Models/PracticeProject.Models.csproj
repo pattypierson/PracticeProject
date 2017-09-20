@@ -41,9 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\People.cs" />
+    <Compile Include="Domain\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\PersonAddRequest.cs" />
     <Compile Include="Requests\PersonUpdateRequest.cs" />
+    <Compile Include="Requests\TeamAddRequest.cs" />
+    <Compile Include="Requests\TeamUpdateRequest.cs" />
     <Compile Include="Responses\BaseResponse.cs" />
     <Compile Include="Responses\ErrorResponse.cs" />
     <Compile Include="Responses\ItemResponse.cs" />
