@@ -4,24 +4,39 @@
 }
 
 <h2>People Index</h2>
-<div class="container" ng-controller="peopleController as pplCtrl" ng-cloak>
-    <table class="table table-hover table-responsive">
-        <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Middle Int.</th>
-                <th>Last Name</th>
-                <th>Created Date</th>
-                <th>Modified Date</th>
-                <th>Modified By</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
+<div ng-app="mainApp">
+    <div class="container" ng-controller="peopleController as pplCtrl" ng-cloak>
+        <table class="table table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Middle I.</th>
+                    <th>Last Name</th>
+                    <th>Created Date</th>
+                    <th>Modified Date</th>
+                    <th>Modified By</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="items in pplCtrl.items">
+                    <td>{{items.firstName}}</td>
+                    <td>{{items.middleInitial}}</td>
+                    <td>{{items.lastName}}</td>
+                    <td>{{items.createdDate | date: "short"}}</td>
+                    <td>{{items.modifiedDate | date: "short"}}</td>
+                    <td>{{items.modifiedBy}}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {{pplCtrl.items | json}}
 </div>
+@section scripts{
+<script src="~/Scripts/angularjs/angular.min.js"></script>
+<script src="~/Scripts/App/mainApp.js"></script>
+<script src="~/Scripts/App/People/PeopleService.js"></script>
+<script src="~/Scripts/App/People/PeopleController.js"></script>
+    }
 
