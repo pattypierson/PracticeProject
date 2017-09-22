@@ -1,0 +1,52 @@
+﻿@model PracticeProject.Models.ViewModels.ItemViewModel<int>
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>Manage People</h2>
+<div ng-app="mainApp">
+    <div class="container" ng-controller="peopleManageCtrl as pplMgCtrl">
+        <input id="modelId" type="hidden" value=@Model.Item />
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <form role="form">
+                        <div class="form-group">
+
+                            <label for="firstName">
+                                First Name
+                            </label>
+                            <input type="text" class="form-control" id="firstName" />
+                        </div>
+                        <div class="form-group">
+
+                            <label for="middleInitial">
+                                Middle I.
+                            </label>
+                            <input type="text" class="form-control" id="middleInitial" />
+                        </div>
+                        <div class="form-group">
+
+                            <label for="lastName">
+                                Last Name
+                            </label>
+                            <input type="text" class="form-control" id="lastName" />
+                        </div>
+
+                        <button type="submit" class="btn btn-success btn-xs">
+                            Submit
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/angularjs/angular.min.js"></script>
+    <script src="~/Scripts/App/mainApp.js"></script>
+    @*<script src="~/Scripts/App/People/PeopleService.js"></script>
+    <script src="~/Scripts/App/People/PeopleController.js"></script>*@
+}
+
+

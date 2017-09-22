@@ -263,6 +263,7 @@
     <Content Include="Scripts\angularjs\angular.min.js" />
     <Content Include="Scripts\App\mainApp.js" />
     <Content Include="Scripts\App\People\PeopleController.js" />
+    <Content Include="Scripts\App\People\PeopleManageCtrl.js" />
     <Content Include="Scripts\App\People\PeopleService.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angularjs\angular.min.js.map" />
@@ -1068,6 +1069,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\People\Index.cshtml" />
+    <Content Include="Views\People\Manage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
