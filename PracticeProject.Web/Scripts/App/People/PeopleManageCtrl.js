@@ -6,10 +6,19 @@
         .module("mainApp")
         .controller("peopleManageCtrl", peopleManageCtrl);
 
-    peopleManageCtrl.$inject = ["$scope", "peopleService"];
+    peopleManageCtrl.$inject = ["$scope", "$window", "peopleService"];
 
-    function peopleManageCtrl($scope, peopleservice) {
+    function peopleManageCtrl($scope, $window, peopleService) {
+        var vm = this;
 
+        vm.peopleService = peopleService;
+        vm.item = {};
+        vm.items = [];
+        //vm.submit = _submit;
+        vm.itemId = parseInt($("#itemId").val());
+        //vm.$onInit = _init;
+
+        //--THE FOLD--
     }
 
 

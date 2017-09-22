@@ -6,15 +6,18 @@
         .module("mainApp")
         .controller("peopleController", peopleController);
 
-    peopleController.$inject = ["$scope", "peopleService"];
+    peopleController.$inject = ["$scope", "$window", "peopleService"];
 
-    function peopleController($scope, peopleService) {
+    function peopleController($scope, $window, peopleService) {
         var vm = this;
-        //vm.$scope = $scope;
+        
         vm.peopleService = peopleService;
         vm.items = [];
         vm.item = {};     
         vm.$onInit = _init;
+        vm.add = _add;
+        vm.edit = _edit;
+        vm.delete = _delete;
 
         //--THE FOLD
 
@@ -32,6 +35,36 @@
 
         //--Get All ERROR--
         function _peopleGetAllError(error) {
+            console.log(error);
+        }
+
+        //--on add click, opens form window to create
+        function _add() {
+            $window.location.href = "/people/create";
+        }
+
+        //--on edit click, opens form window to edit
+        function _edit(id) {
+            vm.item.id = id;
+            console.log("Item ID:", vm.item.id);
+            $window.location.href = "/people/" + vm.item.id + "/edit";
+        }
+
+        //--DELETE A COMPANY FROM TABLE--
+        function _delete(id, index) {
+            vm.index = index;
+            vm.peopleService.deletePerson(id)
+                .then(_deletePersonSuccess, _deletePersonError);
+        }
+
+        //--DELETE SUCCESS--
+        function _deletePersonSuccess(response) {
+            console.log(response);
+            vm.items.splice(vm.index, 1);
+        }
+
+        //--DELETE ERROR--
+        function _deletePersonError() {
             console.log(error);
         }
     }

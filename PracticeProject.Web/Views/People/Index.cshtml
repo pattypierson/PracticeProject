@@ -27,12 +27,13 @@
                     <td>{{items.modifiedDate | date: "short"}}</td>
                     <td>{{items.modifiedBy}}</td>
                     <td>
-                        <button class="btn btn-primary btn-xs" type="button" @*ng-click="personCtrl.edit(item)"*@>Edit</button>
-                        <button class="btn btn-danger btn-xs" type="button" @*ng-click="personCtrl.delete(item)"*@>Delete</button>
+                        <button class="btn btn-primary btn-xs" type="button" ng-click="pplCtrl.edit(item)">Edit</button>
+                        <button class="btn btn-danger btn-xs" type="button" ng-click="pplCtrl.delete(item)">Delete</button>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <button class="btn btn-success btn-xs pull-left" type="button" ng-click="pplCtrl.add()">Add</button>
     </div>
 </div>
 @section scripts{
@@ -40,5 +41,5 @@
 <script src="~/Scripts/App/mainApp.js"></script>
 <script src="~/Scripts/App/People/PeopleService.js"></script>
 <script src="~/Scripts/App/People/PeopleController.js"></script>
-    }
+ }
 

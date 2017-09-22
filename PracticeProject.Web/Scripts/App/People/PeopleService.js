@@ -11,6 +11,10 @@
     function peopleService($http, $q) {
         return {
             peopleGetAll: _peopleGetAll,
+            personGetById: _personGetById,
+            postNewPerson: _postNewPerson,
+            updatePerson: _updatePerson,
+            deletePerson: _deletePerson,          
         };
 
         //--THE FOLD
@@ -18,6 +22,30 @@
         //--GET ALL--
         function _peopleGetAll() {
             return $http.get("/api/people", { withCredentials: true })
+                .then(_serviceCallComplete, _serviceCallFailed);
+        }
+
+        //--GET By ID--
+        function _personGetById(int) {
+            return $http.get("/api/people" + id, { withCredentials: true })
+                .then(_serviceCallComplete, _serviceCallFailed);
+        }
+
+        //--POST--
+        function _postNewPerson(int) {
+            return $http.get("/api/people" + data, { withCredentials: true })
+                .then(_serviceCallComplete, _serviceCallFailed);
+        }
+
+        //--UPDATE--
+        function _updatePerson(data, id) {
+            return $http.put("/api/people/" + id, data, { withCredentials: true })
+                .then(_serviceCallComplete, _serviceCallFailed);
+        }
+
+        //--Company DELETE--
+        function _deletePerson(id) {
+            return $http.delete("/api/people/" + id, { withCredentials: true })
                 .then(_serviceCallComplete, _serviceCallFailed);
         }
 
