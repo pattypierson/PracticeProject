@@ -52,6 +52,9 @@
 
         //--DELETE A COMPANY FROM TABLE--
         function _delete(id, index) {
+            vm.item = id;
+            var id = vm.item.id;
+            var index = vm.items.indexOf(vm.item);
             vm.index = index;
             vm.peopleService.deletePerson(id)
                 .then(_deletePersonSuccess, _deletePersonError);
@@ -64,7 +67,7 @@
         }
 
         //--DELETE ERROR--
-        function _deletePersonError() {
+        function _deletePersonError(error) {
             console.log(error);
         }
     }
