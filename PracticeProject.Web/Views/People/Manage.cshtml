@@ -3,38 +3,52 @@
     ViewBag.Title = "Manage";
 }
 
-<h2>Manage People</h2>
+<h2>Manage Person</h2>
 <div ng-app="mainApp">
     <div class="container" ng-controller="peopleManageCtrl as pplMgCtrl">
-        <input id="modelId" type="hidden" value=@Model.Item />
+        <input id="itemId" type="hidden" value=@Model.Item />
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
                     <form role="form">
-                        <div class="form-group">
 
+                        <div class="form-group">
+                            <label for="id">
+                                Id: 
+                            </label>
+                            @*{{pplMgCtrl.item.id}}*@
+                        </div>
+
+                        <div class="form-group">
                             <label for="firstName">
                                 First Name
                             </label>
-                            <input type="text" class="form-control" id="firstName" />
+                            <input type="text" class="form-control" ng-model="pplMgCtrl.item.firstName" required/>
                         </div>
-                        <div class="form-group">
 
+                        <div class="form-group">
                             <label for="middleInitial">
                                 Middle I.
                             </label>
-                            <input type="text" class="form-control" id="middleInitial" />
+                            <input type="text" class="form-control" ng-model="pplMgCtrl.item.middleInitial" />
                         </div>
-                        <div class="form-group">
 
+                        <div class="form-group">
                             <label for="lastName">
                                 Last Name
                             </label>
-                            <input type="text" class="form-control" id="lastName" />
+                            <input type="text" class="form-control" ng-model="pplMgCtrl.item.lastName" required/>
                         </div>
 
-                        <button type="submit" class="btn btn-success btn-xs">
-                            Submit
+                        <div class="form-group">
+                            <label for="modifiedBy">
+                                Modified By
+                            </label>
+                            <input type="text" class="form-control" ng-model="pplMgCtrl.item.modifiedBy" required />
+                        </div>
+
+                        <button type="button" ng-click="pplMgCtrl.save()" class="btn btn-success btn-xs">
+                            Save
                         </button>
                     </form>
                 </div>
@@ -45,7 +59,7 @@
 @section scripts{
     <script src="~/Scripts/angularjs/angular.min.js"></script>
     <script src="~/Scripts/App/mainApp.js"></script>
-    <script src="~/Scripts/App/People/PeopleService.js"></script>  
+    <script src="~/Scripts/App/People/PeopleService.js"></script>
     <script src="~/Scripts/App/People/PeopleManageCtrl.js"></script>
 }
 

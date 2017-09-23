@@ -45,7 +45,7 @@
 
         //--on edit click, opens form window to edit
         function _edit(id) {
-            vm.item.id = id;
+            vm.item = id;
             console.log("Item ID:", vm.item.id);
             $window.location.href = "/people/" + vm.item.id + "/edit";
         }
