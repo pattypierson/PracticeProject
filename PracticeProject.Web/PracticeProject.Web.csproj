@@ -202,6 +202,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiControllers\PeopleApiController.cs" />
     <Compile Include="Controllers\ApiControllers\TeamApiController.cs" />
+    <Compile Include="Controllers\DataPickerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
@@ -261,6 +262,7 @@
     <Content Include="Scripts\angularjs\angular-touch.min.js" />
     <Content Include="Scripts\angularjs\angular.js" />
     <Content Include="Scripts\angularjs\angular.min.js" />
+    <Content Include="Scripts\App\DataPicker\DataPicker.js" />
     <Content Include="Scripts\App\mainApp.js" />
     <Content Include="Scripts\App\People\PeopleController.js" />
     <Content Include="Scripts\App\People\PeopleManageCtrl.js" />
@@ -1070,6 +1072,7 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\People\Index.cshtml" />
     <Content Include="Views\People\Manage.cshtml" />
+    <Content Include="Views\DataPicker\Random.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

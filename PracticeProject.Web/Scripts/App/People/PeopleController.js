@@ -21,7 +21,7 @@
 
         //--THE FOLD
 
-        //--GET ALL COMPANIES--
+        //--GET ALL People--
         function _init() {
             vm.peopleService.peopleGetAll()
                 .then(_peopleGetAllSuccess, _peopleGetAllError);
