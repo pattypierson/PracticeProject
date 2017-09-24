@@ -2,15 +2,79 @@
 @{
     ViewBag.Title = "Random";
 }
+<style>
+    .scrollable-menu {
+        height: auto;
+        max-height: 200px;
+        overflow-x: hidden;
+    }
 
+    .checkbox-inline {
+        margin-left: 0;
+    }
+</style>
 <h2>Random</h2>
 <div ng-app="mainApp">
     <div class="container" ng-controller="dataPickerCtrl as pickCtrl" ng-cloak>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <button type="button" class="btn btn-primary btn-xs">Randomize</button>
-                    <h4></h4>
+                    <span>Click the button to see who get's to choose today's lunch option</span><br/>
+                    <button type="button" class="btn btn-primary btn-xs personBtn">Randomize</button>
+                    <h4>The Decider: <span class="winner"></span></h4>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-6" id="selections">
+                        <label class="control-label">Cuisines</label>
+                        <p class="help-block"><small>Mark selections:</small></p>
+
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="american" value="American"> American
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="burgers" value="Burgers"> Burgers
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="thai" value="Thai"> Thai
+                        </label><br>
+                        @*BREAK*@
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="italian" value="Italian"> Italian
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="pizza" value="Pizza"> Pizza
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="vietnamese" value="Vietnamese"> Vietnamese
+                        </label><br>
+                        @*BREAK*@
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="chinese" value="Chinese"> Chinese
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="deli" value="Deli"> Deli
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="sushi" value="Sushi"> Sushi
+                        </label><br>
+                        @*BREAK*@
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="mexican" value="Mexican"> Mexican
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="german" value="German"> German
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="healthy" value="Healthy"> Healthy
+                        </label><br>
+                        @*BREAK*@
+                        
+                        <br />
+                        <div class="resultBox">
+                            <button type="button" class="btn btn-primary btn-xs foodBtn">Let's Pick</button>
+                            <h4>Food of Choice: <span class="foodChoice"></span></h4>
+                        </div>
+                        </div>                          
                 </div>
             </div>
         </div>
@@ -19,6 +83,7 @@
 @section scripts{
     <script src="~/Scripts/angularjs/angular.min.js"></script>
     <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
     <script src="~/Scripts/App/mainApp.js"></script>    
     <script src="~/Scripts/App/DataPicker/DataPicker.js"></script>    
     <script src="~/Scripts/App/People/PeopleService.js"></script>

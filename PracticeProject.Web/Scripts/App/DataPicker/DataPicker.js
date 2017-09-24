@@ -39,10 +39,27 @@
 
         //--RANDOMIZER--
 
-        $('button').click(function () {
-            $('h4').text(randomEl(names) + ' ' + randomEl(cuisines));
-            selectElementContents($('h4')[0]);
+        //$('button').click(function () {
+        //    $('h4').text(randomEl(names) + ' ' + randomEl(cuisines));
+        //    selectElementContents($('h4')[0]);
+        //});
+
+        $('.personBtn').click(function () {
+            $('.winner').text(randomEl(names));
+            selectElementContents($('.winner')[0]);
         });
+
+        $('.foodBtn').click(function () {
+            event.preventDefault();
+            var cuisines = [];
+            $("#selections input:checkbox:checked").map(function () {
+                cuisines.push($(this).val());
+            });
+            console.log(cuisines);
+            $('.foodChoice').text(randomEl(cuisines));
+            selectElementContents($('.foodChoice')[0]);
+        });
+
 
         function randomEl(list) {
             var i = Math.floor(Math.random() * list.length);
@@ -57,8 +74,9 @@
             sel.addRange(range);
         }
 
-        var names = ["test", "test2", "test3"];
+        var names = ["Vic", "Patty", "Sam", "Eddie", "Austin", "Seung", "Andrew", "Jason", "Mike"];
 
-        var cuisines = ["American", "Thai", "Pizza", "Burgers"];
+        //var cuisines = ["American", "Thai", "Pizza", "Burgers", "Sushi", "Italian", "Mexican",
+        //    "New American", "Sandwiches", "Vietnamese", "Chinese", "German", "Healthy"];
     }
 })();
