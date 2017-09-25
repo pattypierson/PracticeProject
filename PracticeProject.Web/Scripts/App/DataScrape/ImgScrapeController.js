@@ -14,6 +14,9 @@
         vm.imgScrapeService = imgScrapeService;
         vm.img = "";
         vm.items = [];
+        vm.item = {};
+        vm.single = {};
+        vm.data = {};
         vm.search = _search;
         
         //--THE FOLD
@@ -27,10 +30,28 @@
         function _imgGetAllSuccess(response) {
             vm.items = response.data;
             console.log(vm.items);
+            vm.single = vm.items[1];        
+            //vm.imageName = vm.img;
+            //vm.image = vm.single;
+            vm.data = { imageName: vm.img, image: vm.single};
+            vm.imgScrapeService.postScrape(vm.data)
+                .then(_postCallSuccess, _postCallError);
         }
 
         //--Get All ERROR--
         function _imgGetAllError(error) {
+            console.log(error);
+        }
+
+        //--Post/Put Success
+        function _postCallSuccess(response) {
+            console.log(response);
+            vm.item = {};
+            //$window.location.href = "/people";
+        }
+
+        //--Post/Put Error
+        function _postCallError(error) {
             console.log(error);
         }
     }

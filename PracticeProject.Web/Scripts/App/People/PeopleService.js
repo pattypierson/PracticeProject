@@ -30,7 +30,7 @@
             return $http.get("/api/people/" + id, { withCredentials: true })
                 .then(_serviceCallComplete, _serviceCallFailed);
         }
-
+        //--POST--
         function _postNewPerson(data) {
             return $http.post("/api/people", data, { withCredentials: true })
                 .then(_serviceCallComplete, _serviceCallFailed);

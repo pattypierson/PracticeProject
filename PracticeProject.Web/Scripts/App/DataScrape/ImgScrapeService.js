@@ -10,7 +10,8 @@
 
     function imgScrapeService($http, $q) {
         return {
-            getAll: _getAll
+            getAll: _getAll,
+            postScrape: _postScrape
         };
 
         //--THE FOLD--
@@ -26,6 +27,12 @@
             return $http(settings)
                 .then(_serviceCallComplete, _serviceCallFailed);
         }
+
+        function _postScrape(data) {
+            return $http.post("/api/scrape", data, { withCredentials: true })
+                .then(_serviceCallComplete, _serviceCallFailed);
+        }
+
         //--SERVICE CALL SUCCESS--
         function _serviceCallComplete(response) {
             return response;
