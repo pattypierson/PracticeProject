@@ -60,7 +60,6 @@
             //console.log(cuisines);
             $('.foodChoice').text(randomEl(cuisines));
             selectElementContents($('.foodChoice')[0]);
-            console.log($('.foodChoice').textContent);
         });
         
         function randomEl(list) {

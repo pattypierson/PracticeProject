@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Random";
+    ViewBag.Title = "Click to Pick";
 }
 <h2>Random</h2>
 <div ng-app="mainApp">
@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <span>Click the button to see who gets to choose today's lunch option</span><br/>
+                    <span>Click the button to see who gets to choose today's lunch  or dinner option</span><br/>
                     <button type="button" class="btn btn-primary btn-xs personBtn">Randomize</button>
                     <h4>The Decider: <span class="winner"></span></h4>
                 </div>
@@ -38,10 +38,17 @@
                         </label><br>
                         @*BREAK*@
                         <label class="checkbox-inline">
+                            <input type="checkbox" id="steak" value="Steak House"> Steak House
+                        </label>                      
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="bbq" value="BBQ"> BBQ
+                        </label><br>
+                        @*BREAK*@
+                        <label class="checkbox-inline">
                             <input type="checkbox" id="chinese" value="Chinese"> Chinese
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="deli" value="Deli"> Deli
+                            <input type="checkbox" id="french" value="French"> French
                         </label>
                         <label class="checkbox-inline">
                             <input type="checkbox" id="sushi" value="Sushi"> Sushi
@@ -57,7 +64,41 @@
                             <input type="checkbox" id="healthy" value="Healthy"> Healthy
                         </label><br>
                         @*BREAK*@
-                        
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="mediterranean" value="Mediterranean"> Mediterranean
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="deli" value="Deli"> Deli
+                        </label><br>
+                        @*BREAK*@
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="seafood" value="Seafood"> Seafood
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="pubBrew" value="Pub/Brewery"> Pub/Brewery
+                        </label><br>
+                        @*BREAK*@
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="japanese" value="Japanese"> Japanese
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="korean" value="Korean"> Korean
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="ramen" value="Ramen"> Ramen
+                        </label><br />
+                        @*BREAK*@    
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="south" value="Southern"> Southern
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="wineBar" value="Wine Bar"> Wine Bar
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="cafe" value="Cafe"> Cafe
+                        </label><br />
+                        @*BREAK*@
+                                            
                         <br />
                         <div class="resultBox">
                             <button type="button" class="btn btn-primary btn-xs foodBtn">Let's Pick</button>
