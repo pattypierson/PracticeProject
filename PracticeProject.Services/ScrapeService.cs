@@ -7,17 +7,17 @@ namespace PracticeProject.Services
 {
     public class ScrapeService
     {
-        public List<string> Scrape(string img)
+        public List<string> Scrape(string imgname)
         {
-            var document = new HtmlWeb().Load("https://www.pexels.com/search" + img);
+            var document = new HtmlWeb().Load("https://www.pexels.com/search/" + imgname);
             var urls = document.DocumentNode.Descendants("img")
                                             .Select(e => e.GetAttributeValue("src", null))
                                             .Where(s => !String.IsNullOrEmpty(s));
             List<string> list = urls.ToList();
             List<string> newList = new List<string>();
-            for (var i = 0; i < 16; i++)
+            foreach (var item in list)
             {
-                newList.Add(list[i]);
+                newList.Add(item);
             }
             return newList;
         }
