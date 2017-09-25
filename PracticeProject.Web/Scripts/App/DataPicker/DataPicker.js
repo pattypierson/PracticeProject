@@ -27,9 +27,16 @@
         //--Get All SUCCESS--
         function _peopleGetAllSuccess(response) {
             vm.items = response.data.items;
-            console.log(vm.items);
-            //names = vm.items.firstName;
-            //console.log(names);
+            var names = vm.items;
+            var firstName = [];
+            names.forEach(function (item) {
+                var val = item.firstName
+                firstName.push(val);
+            })
+            $('.personBtn').click(function () {
+                $('.winner').text(randomEl(firstName));
+                selectElementContents($('.winner')[0]);
+            });
         }
 
         //--Get All ERROR--
@@ -39,10 +46,10 @@
 
         //--RANDOMIZER--
 
-        $('.personBtn').click(function () {
-            $('.winner').text(randomEl(names));
-            selectElementContents($('.winner')[0]);
-        });
+        //$('.personBtn').click(function () {
+        //    $('.winner').text(randomEl(names));
+        //    selectElementContents($('.winner')[0]);
+        //});
 
         $('.foodBtn').click(function () {
             event.preventDefault();
@@ -68,10 +75,5 @@
             sel.removeAllRanges();
             sel.addRange(range);
         }
-
-        var names = ["Vic", "Patty", "Sam", "Eddie", "Austin", "Seung", "Andrew", "Jason", "Mike"];
-
-        //var cuisines = ["American", "Thai", "Pizza", "Burgers", "Sushi", "Italian", "Mexican",
-        //    "New American", "Sandwiches", "Vietnamese", "Chinese", "German", "Healthy"];
     }
 })();
