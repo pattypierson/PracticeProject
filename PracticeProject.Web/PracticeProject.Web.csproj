@@ -201,6 +201,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiControllers\PeopleApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\ScrapeApiController.cs" />
     <Compile Include="Controllers\ApiControllers\TeamApiController.cs" />
     <Compile Include="Controllers\DataPickerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

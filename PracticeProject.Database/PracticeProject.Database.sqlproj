@@ -73,6 +73,7 @@
     <Build Include="StoredProcedures\Team_Update.sql" />
     <Build Include="StoredProcedures\Team_SelectById.sql" />
     <Build Include="StoredProcedures\Team_Delete.sql" />
+    <Build Include="Tables\Images.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="PracticeProject.Database.refactorlog" />
