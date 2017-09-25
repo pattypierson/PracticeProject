@@ -18,9 +18,17 @@ namespace PracticeProject.Web.Controllers.ApiControllers
         [Route("{img}"), HttpGet]
         public HttpResponseMessage Get(string img)
         {
-            List<string> response = new List<string>();
-            response = scrapeService.Scrape(img);
-            return Request.CreateResponse(HttpStatusCode.OK, response);
+            try
+            {
+                List<string> response = new List<string>();
+                response = scrapeService.Scrape(img);
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+            
         }
 
         [Route(), HttpPost]

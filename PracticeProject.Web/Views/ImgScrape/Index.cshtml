@@ -2,8 +2,23 @@
 @{
     ViewBag.Title = "Index";
 }
+<style>
+    [ng\:cloak], [ng-cloak], .ng-cloak {
+        display: none !important;
+    }
 
+    .thumbnail {
+        border: 2px dotted #808080; /* Gray border */
+        border-radius: 4px; /* Rounded border */
+        padding: 10px; /* Some padding */
+    }
+
+    img {
+        border-radius: 8px; 
+    }
+</style>
 <h2>Image Scraper</h2>
+<p class="help-block"><small>powered by: pexels.com</small></p>
 <div ng-app="mainApp">
     <div class="container" ng-controller="imgScrapeController as imgScrapeCtrl" ng-cloak>
         <div class="container-fluid">
@@ -16,16 +31,15 @@
                 </form>
             </div>
         </div>
-        <div class="container row">
-            <div ng-repeat="item in imgScrapeCtrl.items" class="thumbnail col-sm-3">
-                <img ng-src="{{item}}" class="img-responsive" style="width:216px; height:216px;">
+        <div class="container-fluid">
+            <div ng-repeat="item in imgScrapeCtrl.items" class="thumbnail col-sm-4">
+                <img ng-src="{{item}}" class="img-responsive" style="width:300px; height:300px;">
             </div>
         </div>
     </div>
 </div>
 @section scripts{
     <script src="~/Scripts/angularjs/angular.min.js"></script>
-    @*<script src="~/Scripts/jquery-3.1.1.min.js"></script>*@
     <script src="~/Scripts/App/mainApp.js"></script>  
     <script src="~/Scripts/App/DataScrape/ImgScrapeController.js"></script>
     <script src="~/Scripts/App/DataScrape/ImgScrapeService.js"></script>

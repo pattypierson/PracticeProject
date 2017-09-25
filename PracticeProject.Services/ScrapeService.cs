@@ -10,9 +10,9 @@ namespace PracticeProject.Services
 {
     public class ScrapeService : BaseService
     {
-        public List<string> Scrape(string imgname)
+        public List<string> Scrape(string img)
         {
-            var document = new HtmlWeb().Load("https://www.pexels.com/search/" + imgname);
+            var document = new HtmlWeb().Load("https://www.pexels.com/search/" + img);
             var urls = document.DocumentNode.Descendants("img")
                                             .Select(e => e.GetAttributeValue("src", null))
                                             .Where(s => !String.IsNullOrEmpty(s));
