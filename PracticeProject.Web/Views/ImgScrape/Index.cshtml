@@ -25,15 +25,20 @@
             <div class="row">
                 <form name="imgForm">
                     <input type="text" placeholder="Search" ng-model="imgScrapeCtrl.img" required>
-                    <button class="btn btn-primary btn-xs" ng-click="imgScrapeCtrl.search()">
+                    <button class="btn btn-info btn-xs" ng-click="imgScrapeCtrl.search()">
                         Go!
+                    </button>
+                    <button class="btn btn-primary btn-xs pull-right" ng-click="imgScrapeCtrl.save()">
+                        Save Img
                     </button>
                 </form>
             </div>
         </div>
         <div class="container-fluid">
-            <div ng-repeat="item in imgScrapeCtrl.items" class="thumbnail col-sm-4">
-                <img ng-src="{{item}}" class="img-responsive single" style="width:300px; height:300px;">
+            <div  class="checkbox-inline thumbnail col-sm-3" ng-repeat="item in imgScrapeCtrl.items">
+                <input id="{{ role.Value }}" ng-click="setRole(role.Value)" ng-checked="role.Value == roleSelected" class="styled" type="checkbox"
+                       name="{{ role.Group }}" value="{{ role.Value }}" />
+                <img ng-src="{{item}}" class="img-responsive single" style="width:250px; height:250px;">
             </div>
         </div>
     </div>
