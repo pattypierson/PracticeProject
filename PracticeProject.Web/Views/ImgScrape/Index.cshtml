@@ -35,17 +35,12 @@
             </div>
         </div>
         <div class="container-fluid">
-            <div  class="checkbox-inline thumbnail col-sm-3" ng-repeat="item in imgScrapeCtrl.items">
-                <input id="{{ role.Value }}" ng-click="setRole(role.Value)" ng-checked="role.Value == roleSelected" class="styled" type="checkbox"
-                       name="{{ role.Group }}" value="{{ role.Value }}" />
+            <div  class="thumbnail col-sm-3" ng-repeat="item in imgScrapeCtrl.items">
                 <img ng-src="{{item}}" class="img-responsive single" style="width:250px; height:250px;">
             </div>
         </div>
     </div>
 </div>
 @section scripts{
-    <script src="~/Scripts/angularjs/angular.min.js"></script>
-    <script src="~/Scripts/App/mainApp.js"></script>  
-    <script src="~/Scripts/App/DataScrape/ImgScrapeController.js"></script>
-    <script src="~/Scripts/App/DataScrape/ImgScrapeService.js"></script>
+    @Scripts.Render("~/bundles/imgScrapeBundle")
 }

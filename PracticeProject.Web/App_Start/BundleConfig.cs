@@ -23,6 +23,12 @@ namespace PracticeProject.Web
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/imgScrapeBundle").Include(
+                      "~/Scripts/angularjs/angular.min.js",
+                      "~/Scripts/App/mainApp.js",
+                      "~/Scripts/App/DataScrape/ImgScrapeController.js",
+                      "~/Scripts/App/DataScrape/ImgScrapeService.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
