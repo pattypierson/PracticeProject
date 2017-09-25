@@ -1,5 +1,5 @@
 ﻿(function () {
-    console.log("people controller works")
+    //console.log("people controller works")
     "use strict";
 
     angular

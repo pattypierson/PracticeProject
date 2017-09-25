@@ -1,5 +1,5 @@
 ﻿(function () {
-    console.log("ppl manage controller works");
+    //console.log("ppl manage controller works");
     "use strict";
 
     angular

@@ -2,24 +2,13 @@
 @{
     ViewBag.Title = "Random";
 }
-<style>
-    .scrollable-menu {
-        height: auto;
-        max-height: 200px;
-        overflow-x: hidden;
-    }
-
-    .checkbox-inline {
-        margin-left: 0;
-    }
-</style>
 <h2>Random</h2>
 <div ng-app="mainApp">
     <div class="container" ng-controller="dataPickerCtrl as pickCtrl" ng-cloak>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <span>Click the button to see who get's to choose today's lunch option</span><br/>
+                    <span>Click the button to see who gets to choose today's lunch option</span><br/>
                     <button type="button" class="btn btn-primary btn-xs personBtn">Randomize</button>
                     <h4>The Decider: <span class="winner"></span></h4>
                 </div>
@@ -83,10 +72,10 @@
 @section scripts{
     <script src="~/Scripts/angularjs/angular.min.js"></script>
     <script src="~/Scripts/jquery-3.1.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
     <script src="~/Scripts/App/mainApp.js"></script>    
     <script src="~/Scripts/App/DataPicker/DataPicker.js"></script>    
-    <script src="~/Scripts/App/People/PeopleService.js"></script>
+    <script src="~/Scripts/App/People/PeopleService.js"></script>  
+    @*<script src="~/Scripts/App/DataScrape/ImgScrapeService.js"></script>*@
 }
 
 

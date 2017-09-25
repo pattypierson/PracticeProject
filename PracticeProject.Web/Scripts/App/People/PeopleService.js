@@ -1,5 +1,5 @@
 ﻿(function () {
-    console.log("people service works");
+    //console.log("people service works");
     "use strict";
 
     angular

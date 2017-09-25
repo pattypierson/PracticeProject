@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Image Scraper</h2>
+<div ng-app="mainApp">
+    <div class="container" ng-controller="imgScrapeController as imgScrapeCtrl" ng-cloak>
+        <div class="container-fluid">
+            <div class="row">
+                <form name="imgForm">
+                    <input type="text" placeholder="Search" ng-model="imgScrapeCtrl.img" required>
+                    <button class="btn btn-primary btn-xs" ng-click="imgScrapeCtrl.search()">
+                        Go!
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="container row">
+            <div ng-repeat="item in imgScrapeCtrl.items" class="thumbnail col-sm-3">
+                <img ng-src="{{item}}" class="img-responsive" style="width:216px; height:216px;">
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/angularjs/angular.min.js"></script>
+    @*<script src="~/Scripts/jquery-3.1.1.min.js"></script>*@
+    <script src="~/Scripts/App/mainApp.js"></script>  
+    <script src="~/Scripts/App/DataScrape/ImgScrapeController.js"></script>
+    <script src="~/Scripts/App/DataScrape/ImgScrapeService.js"></script>
+}

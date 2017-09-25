@@ -1,5 +1,5 @@
 ﻿(function () {
-    console.log("data picker ctrl works");
+    //console.log("data picker ctrl works");
     "use strict";
 
     angular
@@ -11,7 +11,7 @@
     function dataPickerCtrl($scope, $window, peopleService) {
         var vm = this;
 
-        vm.peopleService = peopleService;
+        vm.peopleService = peopleService;       
         vm.items = [];
         vm.item = {};
         vm.$onInit = _init;
@@ -39,11 +39,6 @@
 
         //--RANDOMIZER--
 
-        //$('button').click(function () {
-        //    $('h4').text(randomEl(names) + ' ' + randomEl(cuisines));
-        //    selectElementContents($('h4')[0]);
-        //});
-
         $('.personBtn').click(function () {
             $('.winner').text(randomEl(names));
             selectElementContents($('.winner')[0]);
@@ -55,12 +50,12 @@
             $("#selections input:checkbox:checked").map(function () {
                 cuisines.push($(this).val());
             });
-            console.log(cuisines);
+            //console.log(cuisines);
             $('.foodChoice').text(randomEl(cuisines));
             selectElementContents($('.foodChoice')[0]);
+            console.log($('.foodChoice').textContent);
         });
-
-
+        
         function randomEl(list) {
             var i = Math.floor(Math.random() * list.length);
             return list[i];
